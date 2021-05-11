@@ -9,6 +9,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: '92cb4a58-5aeb-4c0c-9bfb-f05c4be9ea29'
   
   # Web app name
   webAppName: 'javashopstaging'
@@ -17,7 +18,7 @@ variables:
   environmentName: 'javashopstaging'
   
   # Agent VM image name
-  vmImageName: 'ubuntu-18.04'
+  vmImageName: 'ubuntu-latest'
 
 stages:
 - stage: Build
