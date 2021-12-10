@@ -29,11 +29,21 @@ stages:
     pool:
       vmImage: $(vmImageName)
     
+    
+
     steps:
+    
+    - task: DownloadSecureFile@1
+      name: settingsxml
+      displayName: 'Download settings.xml for Maven'
+      inputs:
+        secureFile: 'settings.xml'
+
     - task: Maven@3
       displayName: 'Maven Package'
       inputs:
         mavenPomFile: 'pom.xml'
+        options: '-s $(Agent.TempDirectory)/settings.xml'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
